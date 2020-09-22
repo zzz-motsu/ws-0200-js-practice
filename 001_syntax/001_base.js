@@ -3,6 +3,7 @@
  *
  */
 function helloWorld() {
+  console.log("Hello World");
 }
 
 /**
@@ -10,6 +11,8 @@ function helloWorld() {
  *
  */
 function displayConst() {
+  const item = "hoge";
+  console.log(item);
 }
 
 /**
@@ -17,6 +20,8 @@ function displayConst() {
  *
  */
 function displayLet() {
+  let text = "hoge";
+  console.log(text);
 }
 
 /**
@@ -24,6 +29,7 @@ function displayLet() {
  *
  */
 function displayArgument(arg) {
+  console.log(arg);
 }
 
 /**
@@ -31,13 +37,15 @@ function displayArgument(arg) {
  *
  */
 function sumTwoArgs(a, b) {
-}
+  return a + b;
+};
 
 /**
  *  1.6 渡された二つの引数の差を返却するメソッドを実装してください
  *
  */
 function subtractTwoArgs(a, b) {
+  return a - b;
 }
 
 /**
@@ -45,13 +53,17 @@ function subtractTwoArgs(a, b) {
  *
  */
 function quotientTwoArgs(a, b) {
+  if (b === 0){
+    return null;
+  }
+    return Math.floor(a / b) ;
 }
-
 /**
  *  1.8 渡された二つの引数の積を返却するメソッドを実装してください
  *
  */
 function productTwoArgs(a, b) {
+  return a * b;
 }
 
 /**
@@ -59,6 +71,7 @@ function productTwoArgs(a, b) {
  *
  */
 function remainderTwoArgs(a) {
+  return  a % 2;
 }
 
 /**
@@ -66,6 +79,7 @@ function remainderTwoArgs(a) {
  *
  */
 function isEven(a) {
+  return a % 2 === 0;
 }
 
 /**
@@ -73,6 +87,7 @@ function isEven(a) {
  *
  */
 function concatString(a, b) {
+  return a += b;
 }
 
 module.exports = {

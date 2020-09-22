@@ -8,6 +8,12 @@
  */
 
 function getPersonObject() {
+  const person = {
+    name: 'Bob',
+    age: 32,
+    gender: 'male'
+  };
+  return person;
 }
 
 /**
@@ -25,6 +31,12 @@ function getPersonObject() {
  */
 
 function mutateObject(person) {
+  const B = {
+    name: 'Mary',
+    age: 37,
+    gender: 'female'
+  };
+  return person = Object.assign(person,B);
 }
 
 /**
@@ -49,6 +61,10 @@ function mutateObject(person) {
  */
 
 function assignNumber(persons) {
+  for (let i = 0; i < persons.length; i++) {
+    let num = Math.floor(Math.random()*11);
+    return Object.assign(persons[i],num)
+  }
 }
 
 /**

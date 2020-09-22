@@ -12,6 +12,8 @@
  */
 
 function length(str) {
+  const s = new Set(str);
+  return s.split("").size;
 }
 
 /**
@@ -26,6 +28,8 @@ function length(str) {
  *
  */
 function reverse(str) {
+  return str.split("").reverse().join("");
+
 }
 
 /**
@@ -41,6 +45,7 @@ function reverse(str) {
  */
 
 function findIndex(str, char) {
+  return str.indexOf(char);
 }
 
 /**
@@ -56,6 +61,7 @@ function findIndex(str, char) {
  */
 
 function split(a, b) {
+  return a.split(b);
 }
 
 /**
@@ -71,6 +77,11 @@ function split(a, b) {
  */
 
 function sum(array) {
+  let sum = 0;
+  for (let i = 0; i < array.length; i++){
+    sum += array[i];
+  }
+  return sum;
 }
 
 /**
@@ -88,6 +99,10 @@ function sum(array) {
  */
 
 function average(array) {
+  const sum2 = array.reduce(function (acc, cur) {
+    return acc + cur;
+  });
+  return Math.floor(sum2 / array.length);
 }
 
 /**
@@ -103,6 +118,7 @@ function average(array) {
  */
 
 function concat(a, b) {
+  return a.concat(b);
 }
 
 /**
@@ -118,6 +134,7 @@ function concat(a, b) {
  */
 
 function size(array) {
+  return array.length;
 }
 
 /**
@@ -134,6 +151,9 @@ function size(array) {
  */
 
 function minMax(array) {
+  const max = Math.max(...array);
+  const min = Math.min(...array);
+  console.log("max: " + max + "," + " " + "min: " + min);
 }
 
 /**
@@ -148,6 +168,8 @@ function minMax(array) {
  */
 
 function seq(num) {
+  const minitues = [...Array(num).keys()];
+  return minitues;
 }
 
 /**
@@ -163,6 +185,17 @@ function seq(num) {
  */
 
 function omitSeq(num) {
+  const minitues = [...Array(num+1).keys()];
+  let a = 0;
+  let len = minitues.length;
+  for (let i = 0; i < len; i++) {
+    if (minitues[a] % 2 === 0){
+      minitues.splice(a,1);
+    } else {
+      a += 1;
+    }
+  }
+  return minitues;
 }
 
 /**
@@ -178,6 +211,11 @@ function omitSeq(num) {
  */
 
 function filter(array, num) {
+  function a(value){
+    return (value <= num);
+  }
+  const filterNum = array.filter(a);
+  return filterNum;
 }
 
 
@@ -206,6 +244,17 @@ function filter(array, num) {
  */
 
 function fizzBuzz () {
+  for (let i = 1; i <= 100; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log(i + " " + "FizzBuzz");
+    } else if (i % 3 === 0){
+      console.log(i + " " + "Fizz");
+    } else if (i % 5 === 0){
+      console.log(i + " " + "Buzz");
+    } else {
+      console.log(i);
+    }
+  }
 }
 
 module.exports = {
