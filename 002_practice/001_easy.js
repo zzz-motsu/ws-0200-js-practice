@@ -12,8 +12,11 @@
  */
 
 function length(str) {
-  const s = new Set(str);
-  return s.split("").size;
+  let i = 0;
+  while(str[i]) {
+    i++
+  }
+  return i
 }
 
 /**
@@ -27,9 +30,13 @@ function length(str) {
  *    'fizzbuzz' => 'zzubzzif'
  *
  */
-function reverse(str) {
-  return str.split("").reverse().join("");
 
+function reverse(str) {
+  let tmp = ''
+  for (let i = str.length - 1; i >= 0; i--) {
+    tmp += str[i]
+  }
+  return tmp
 }
 
 /**
@@ -98,7 +105,11 @@ function sum(array) {
  *
  */
 
+
 function average(array) {
+  if (array.length === 0) {
+     return 0
+  }
   const sum2 = array.reduce(function (acc, cur) {
     return acc + cur;
   });
@@ -133,8 +144,13 @@ function concat(a, b) {
  *
  */
 
+
 function size(array) {
-  return array.length;
+  let i = 0
+  while(array[i]) {
+    i++
+  }
+  return i
 }
 
 /**
@@ -151,10 +167,15 @@ function size(array) {
  */
 
 function minMax(array) {
-  const max = Math.max(...array);
-  const min = Math.min(...array);
+  if (array.length === 0) {
+    return 0;
+  }
+  const max = Math.max.apply(null,array)
+  const min = Math.min.apply(null,array)
   console.log("max: " + max + "," + " " + "min: " + min);
 }
+
+
 
 /**
  *  連番
@@ -185,17 +206,11 @@ function seq(num) {
  */
 
 function omitSeq(num) {
-  const minitues = [...Array(num+1).keys()];
-  let a = 0;
-  let len = minitues.length;
-  for (let i = 0; i < len; i++) {
-    if (minitues[a] % 2 === 0){
-      minitues.splice(a,1);
-    } else {
-      a += 1;
-    }
-  }
-  return minitues;
+  const array = []
+  for (let i = 1; i <= num; i += 2) {
+    array.push(i)
+  } 
+  return array;
 }
 
 /**

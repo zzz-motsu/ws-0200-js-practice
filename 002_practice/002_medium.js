@@ -10,6 +10,9 @@
  *
  */
 function rotate(str, num) {
+  let strHead = str.replace(str.slice(0, -num), "");
+  let strFoot = str.slice(0, -num);
+  console.log(strHead + strFoot);
 }
 
 /**
@@ -24,7 +27,30 @@ function rotate(str, num) {
  *
  */
 function removeVowels(str) {
-}
+    let withoutVowels = ""; 
+ 
+    for (let i = 0; i < str.length; i++) { 
+ 
+     if (!isVowel(str[i])) { 
+ 
+     withoutVowels += str[i]; 
+ 
+     }
+ 
+    } 
+ 
+    return withoutVowels; 
+ 
+} 
+ 
+
+ 
+function isVowel(char) { 
+ 
+    return 'aiueo'.includes(char); 
+ 
+} 
+
 
 /**
  *  文字列のカウント
@@ -38,6 +64,7 @@ function removeVowels(str) {
  *
  */
 function countStr(s1, s2) {
+  return (s1.match(new RegExp(s2, "g")) || []).length;
 }
 
 /**
@@ -53,6 +80,8 @@ function countStr(s1, s2) {
  */
 
 function isPalindrome(str) {
+  const reversed = str.split('').reverse().join('');
+  return str === reversed;
 }
 
 /**
@@ -70,6 +99,17 @@ function isPalindrome(str) {
  *
  */
 function isPrime(num) {
+  if (num === 1){
+    return false;
+  }else{
+  for(let i = 2; i < num; i++){
+    if (num % i === 0){
+      return false;
+    }
+  }
+}
+
+  return true;
 }
 
 /**
@@ -88,6 +128,14 @@ function isPrime(num) {
  *
  */
 function sumWithout4andNext(array) {
+  let sum = 0;
+  for(let i = 0; i < array.length; i++){
+    if (array[i] === 4 || array[i-1] === 4){
+      continue;
+    }
+    sum += array[i];
+  }
+  return sum;
 }
 
 module.exports = {

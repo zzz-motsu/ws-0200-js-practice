@@ -61,11 +61,14 @@ function mutateObject(person) {
  */
 
 function assignNumber(persons) {
+  let obj = {}
   for (let i = 0; i < persons.length; i++) {
     let num = Math.floor(Math.random()*11);
-    return Object.assign(persons[i],num)
+    obj[persons[i]] = num
   }
+  return obj
 }
+
 
 /**
  *  6.4 配列に重複した要素があれば、true、そうでなければfalseを返す関数を実装してください
@@ -79,6 +82,15 @@ function assignNumber(persons) {
  */
 
 function isDuplicate(array) {
+  let obj = {}
+  for (let i = 0; i < array.length; i++) {
+    console.log(i, array[i], obj)
+    if (obj[array[i]]) {
+      return true
+    }
+    obj[array[i]] = true
+  }
+  return false
 }
 
 module.exports = {
