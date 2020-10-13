@@ -9,6 +9,16 @@
  */
 
 function bubbleSort (array) {
+  for (let i = 1; i < array.length; i++) {
+    for (let j = array.length - 1; j >= 0; j--) {
+      if (array[j-1] > array[j]) {
+        tmp = array[j-1]
+        array[j-1] = array[j]
+        array[j] = tmp
+      }
+    }
+  }
+  return array
 }
 
 /**
@@ -22,6 +32,17 @@ function bubbleSort (array) {
  */
 
 function insertSort (array) {
+  for (let i = 1; i < array.length; i++) {
+    let j = i
+    while ((j > 0) && (array[j-1] > array[j])) {
+      tmp = array[j-1]
+      array[j-1] = array[j]
+      array[j] = tmp
+
+      j--
+    }
+  }
+  return array
 }
 
 /**
@@ -35,9 +56,38 @@ function insertSort (array) {
  */
 
 function mergeSort (arr) {
+  if (arr.length === 1) {
+    // return once we hit an array with a single item
+    return arr
+  }
+
+  const middle = Math.floor(arr.length / 2) // get the middle item of the array rounded down
+  const left = arr.slice(0, middle) // items on the left side
+  const right = arr.slice(middle) // items on the right side
+
+  return merge(
+    mergeSort(left),
+    mergeSort(right)
+  )
 }
 
 function merge(left, right) {
+  let result = []
+  let indexLeft = 0
+  let indexRight = 0
+
+  while (indexLeft < left.length && indexRight < right.length) {
+    if (left[indexLeft] < right[indexRight]) {
+      result.push(left[indexLeft])
+      indexLeft++
+    } else {
+      result.push(right[indexRight])
+      indexRight++
+    }
+  }
+
+  const _result = result.concat(left.slice(indexLeft)).concat(right.slice(indexRight))
+  return _result
 }
 
 /**
@@ -51,6 +101,40 @@ function merge(left, right) {
  */
 
 function quickSort (a, start = 0, end = (a.length -1)) {
+  const pivotIndex = Math.floor((start + end) / 2);
+  const pivot = a[pivotIndex];
+  let left = start;
+  let right = end;
+
+  while (true) {
+    while (a[left] < pivot) {
+      left++;
+    }
+
+    while (pivot < a[right]) {
+      right--;
+    }
+
+    if (right <= left) {
+      break;
+    }
+
+    var tmp = a[left];
+    a[left] = a[right];
+    a[right] = tmp;
+    left++;
+    right--;
+  }
+
+  if (start < left - 1) {
+    quickSort(a, start, left - 1);
+  }
+
+  if (right + 1 < end) {
+    quickSort(a, right + 1, end);
+  }
+
+  return a;
 };
 
 module.exports = {
